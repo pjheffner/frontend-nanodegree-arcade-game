@@ -1,0 +1,8 @@
+List of References Used
+
+I didn't keep a list of the references used as I went (I only saw this detail when I was ready to submit).
+In general I used:
+stackoverflow 
+Udacity forums
+Udacity Office Hours
+Udacity HTML 5 Game Development course
