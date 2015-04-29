@@ -1,6 +1,6 @@
 // Global Variables
 
-var NUM_ENTRIES = 4,				// really its 3, since loop is < condition
+var NUM_ENTRIES = 3,
 	ENEMY_WIDTH = 98,				// almost the full width of the visible part of image file
 	ENEMY_HEIGHT = 74,
 	ENEMY_INITIAL_X = 10,			// for first enemy
@@ -55,7 +55,7 @@ Enemy.prototype.update = function(dt) {
 		this.x = ENEMY_INITIAL_X;															// reset to starting left edge
 		this.y = SIDEWALK_ROW[Math.floor(Math.random() * SIDEWALK_ROW.length)];	// this varies the row in which enemies will appear		
 	}
-}
+};
 
 Enemy.prototype.render = function() {
 	// Draw the enemy on the screen
@@ -75,7 +75,7 @@ Enemy.prototype.render = function() {
 		player.render();
 		//console.log("---Enemy left-right-top-bottom: ", + enemy.left + " " + enemy.right + " " + enemy.top + " " + enemy.bottom);
 	}
-}
+};
 
 // ------------------------
 // P L A Y E R    S T U F F
@@ -100,7 +100,7 @@ Player.prototype.update = function(dt) {
 	player.right = player.x + PLAYER_WIDTH - PLAYER_BUFFER;
 	player.top = player.y + PLAYER_BUFFER;
 	player.bottom = player.y + PLAYER_HEIGHT - PLAYER_BUFFER;
-}
+};
 
 Player.prototype.render = function() {
 	// Draw the player on the screen, if player reaches the waters edge, play appropriate sound
@@ -112,7 +112,7 @@ Player.prototype.render = function() {
 		player.reset();
 		winSound.play();
 	}
-}
+};
 
 Player.prototype.collided = function (enemy) {
 	// Determine if collision occurred by comparing rectangle edges of enemy and play
@@ -126,14 +126,14 @@ Player.prototype.collided = function (enemy) {
 		 enemy.right < player.left ||
 		 enemy.top > player.bottom ||
 		 enemy.bottom < player.top);
-}
+};
 
 Player.prototype.reset = function() {
 	// Reset player to initial x,y placement
 	
 	this.x = PLAYER_INITIAL_X;
 	this.y = PLAYER_INITIAL_Y;
-}
+};
 
 Player.prototype.handleInput = function(keys) {
 	// Player moves via the arrow keys as defined in EventListener below
@@ -192,7 +192,7 @@ Player.prototype.handleInput = function(keys) {
 	player.update();
 	player.render();
 	//console.log("*** Player moved to left-right-top-bottom: ", + player.left + " " + player.right + " " + player.top + " " + player.bottom);
-}
+};
 
 // ------------------
 // M A I N  
@@ -201,12 +201,12 @@ Player.prototype.handleInput = function(keys) {
 // Place all enemy objects in an array called allEnemies
 // which is used by Engine.js
 
-var x=ENEMY_INITIAL_X, y=ENEMY_INITIAL_Y;				// initial coordinates for 1st Enemy
-for (i=1; i < NUM_ENTRIES; i++) {						// Create 3 enemies, updating x,y for each
+var x = ENEMY_INITIAL_X, y = ENEMY_INITIAL_Y;				// initial coordinates for 1st Enemy
+for (var i = 1; i <= NUM_ENTRIES; i++) {						// Create 3 enemies, updating x,y for each
 	var enemy = new Enemy('Enemy' + i, x, y);
 	allEnemies.push(enemy);
-	x=x + ENEMY_INCR_X;									// to align like the sample board
-	y=y + ENEMY_INCR_Y;									// to align within the rows
+	x = x + ENEMY_INCR_X;									// to align like the sample board
+	y = y + ENEMY_INCR_Y;									// to align within the rows
 }
 
 var player = new Player();								// Instantiate 1 Player
