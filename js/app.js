@@ -48,7 +48,7 @@ Enemy.prototype.update = function(dt) {
 	
 	var speedFactor = Math.floor(Math.random() * (30 - 1 + 1)) + 1;				// makes bugs move at varying speed
 	this.x = this.x + (ENEMY_SPEED * speedFactor * dt);
-	console.log("Enemy, Position: ", name, this.x, this.y);
+	//console.log("Enemy, Position: ", name, this.x, this.y);
 	
 	if (this.x > ctx.canvas.clientWidth) {
 	//if (this.x > clientWidth) {
